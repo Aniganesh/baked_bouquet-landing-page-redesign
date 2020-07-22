@@ -9,19 +9,19 @@ interface IHeaderProps {
 }
 
 
-const header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
+const header: React.FC<IHeaderProps | null> = (props: IHeaderProps) => {
 	if (props.isOpen) {
 		return (
-			<ul>
+			<ul className="header-list">
 				{
 					[...props.listItems].map(item => (
-						<Button key={item}>{item}</Button>
+						<Button style={{margin: '2rem'}} key={item}>{item}</Button>
 					))
 				}
 			</ul>
 		)
 	} else {
-		return (<span style={{ display: 'none' }}></span >);
+		return (null);
 	}
 }
 

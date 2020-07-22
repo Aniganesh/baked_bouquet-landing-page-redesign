@@ -83,7 +83,7 @@ img {
 .lazy-header {
   background: lightcoral;
   display: inline-flex;
-  transition: width 5s ease; 
+  flex-wrap: wrap;
 }
 
 .header-button{

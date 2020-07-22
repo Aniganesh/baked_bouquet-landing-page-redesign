@@ -1,0 +1,13 @@
+.header-list{
+	display:flex;
+	justify-content:space-evenly;
+	max-width: 100vw;
+	
+}
+
+@media screen and (max-width:720px){
+	.header-list{
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+}

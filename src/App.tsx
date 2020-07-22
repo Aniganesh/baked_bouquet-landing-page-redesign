@@ -20,7 +20,7 @@ function App() {
         const tempOptions = headerOptions.slice(0, i);
         setTimeout(() => {
           setHeaderState({ headerOpen: !isOpen, listOptions: tempOptions });
-        }, 200);
+        }, 100);
       }
     }else{
       setHeaderState({ headerOpen: !isOpen, listOptions:[]})

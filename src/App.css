@@ -5,6 +5,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 /* For company name */
 
+/* Resets start */
+
+/* Box sizing rules */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+
+ul[class], ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin*/
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+
+ul[class], ol[class] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Make images easier to work with */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Resets end */
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -17,18 +63,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
-  font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -40,18 +75,17 @@
   }
 }
 
-#landing{
-  background-image: url("vase-of-flowers.jpg");
-  width: 100vw;
-  height: 100vh;
-}
-
-.header-precursor{
-  background: lightcoral;
-  display: inline-flex;
-}
-
-.company-name{
+.company-name {
   font-family: 'Pacifico', cursive !important;
   padding: 1rem;
+}
+
+.lazy-header {
+  background: lightcoral;
+  display: inline-flex;
+  transition: width 5s ease; 
+}
+
+.header-button{
+  margin: 2rem;
 }

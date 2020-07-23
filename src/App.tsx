@@ -5,6 +5,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import './App.css';
 import Collections from './Collections';
 import ShopCollection from './shop_collection';
+import mothersDay from './mothersDay';
+import shopOccasion from './shopOccasion';
+import events from './events';
+import about from './about';
+import blog from './blog';
+import franchise from './franchise';
 
 const useStyles = makeStyles({
   header: {

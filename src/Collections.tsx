@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import http from '../http-common';
-import { Card, CardHeader, CardContent, CardActions, Typography, Button, Link } from '@material-ui/core';
+import { Card, CardHeader, CardActions, Button, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 

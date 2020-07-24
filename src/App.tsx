@@ -1,21 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import './App.css';
+import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles'
 import Collections from './Collections';
-import ShopCollection from './shop_collection';
-import mothersDay from './mothersDay';
-import shopOccasion from './shopOccasion';
-import events from './events';
-import about from './about';
-import blog from './blog';
-import franchise from './franchise';
+import MothersDay from './MothersDay';
+import ShopOccasion from './ShopOccasion';
+import Events from './Events';
+import About from './About';
+import Blog from './Blog';
+import Franchise from './Franchise';
+import HomePage from './HomePage';
+import './App.css';
+
 
 const useStyles = makeStyles({
   header: {
     background: 'lightcoral',
     maxHeight: '10vh',
+    position: 'relative',
   },
   logo: {
     fontFamily: 'Pacifico',
@@ -25,68 +27,39 @@ const useStyles = makeStyles({
   },
   navoption: {
     color: 'white',
+    textDecoration: 'none',
   },
-  landingArea: {
-    background: `url(${require('./vase-of-flowers.jpg')})`,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    display: 'flex',
-    justifyContent: 'left',
-    alignItems: 'center',
-    minWidth: '100vw',
-    minHeight: '90vh',
-  },
-  cta: {
-    marginLeft: '10vw',
-  },
-  collectionsArea: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    width: '100vw',
-  }
 });
-
 
 function App() {
   const classes = useStyles();
-
   return (
     <div className="App">
-      <AppBar className={classes.header}>
-        <Toolbar>
-          <Typography variant="h3" component="h1" className={classes.logo}>Baked bouquet</Typography>
-          <Router>
+      <Router>
+        <AppBar className={classes.header}>
+          <Toolbar>
+            <Typography variant="h3" className={classes.logo} component="h1"><NavLink className={classes.navoption} to="/"> Baked bouquet</NavLink></Typography>
             <Typography variant="h6"><NavLink to="/shop_collection"><Button className={classes.navoption}>Shop Collection</Button></NavLink></Typography>
             <Typography variant="h6"><NavLink to="/mother's_day"><Button className={classes.navoption}>Mother's Day</Button> </NavLink></Typography>
-            <Typography variant="h6"><NavLink to="/shop_occasion"><Button className={classes.navoption}>Shop Occasion</Button> </NavLink></Typography>
+            {/* <Typography variant="h6"><NavLink to="/shop_occasion"><Button className={classes.navoption}>Shop Occasion</Button> </NavLink></Typography> */}
+            <ShopOccasion />
             <Typography variant="h6"><NavLink to="/events"><Button className={classes.navoption}>Events</Button> </NavLink></Typography>
             <Typography variant="h6"><NavLink to="/about"><Button className={classes.navoption}>About Us</Button></NavLink></Typography>
             <Typography variant="h6"><NavLink to="/blog"><Button className={classes.navoption}>Blog</Button></NavLink></Typography>
             <Typography variant="h6"><NavLink to="/franchise"><Button className={classes.navoption}>Franchise</Button></NavLink></Typography>
-            <Switch>
-              {/* TODO: Create the following components: */}
-              <Route path="/shop_collection" component={ShopCollection}></Route>
-              <Route path="/mother's_day" component={mothersDay}></Route>
-              <Route path="/shop_occasion" component={shopOccasion}></Route>
-              <Route path="/events" component={events}></Route>
-              <Route path="/about" component={about}></Route>
-              <Route path="/blog" component={blog}></Route>
-              <Route path="/franchise" component={franchise}></Route>
-            </Switch>
-          </Router>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.landingArea}>
-        <div></div>
-        <Button variant='outlined' size='large' className={classes.cta} color='secondary'>Buy a baked Bouquet</Button>
-      </div>
-      <div className={classes.collectionsArea}>
-        <Collections />
-      </div>
-
+          </Toolbar>
+        </AppBar>
+        <Switch>
+          <Route path="/shop_collection" component={Collections}></Route>
+          <Route path="/mother's_day" component={MothersDay}></Route>
+          {/* <Route path="/shop_occasion" component={ShopOccasion}></Route> */}
+          <Route path="/events" component={Events}></Route>
+          <Route path="/about" component={About}></Route>
+          <Route path="/blog" component={Blog}></Route>
+          <Route path="/franchise" component={Franchise}></Route>
+          <Route path="/" component={HomePage}></Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

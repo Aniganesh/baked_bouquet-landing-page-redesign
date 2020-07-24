@@ -1,7 +1,7 @@
 import React from 'react';
 
-const events: React.FC = () => {
+const Events: React.FC = () => {
 	return (<div>events</div>)
 }
 
-export default events;
+export default Events;

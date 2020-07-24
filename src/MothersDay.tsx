@@ -1,8 +1,8 @@
 import React from 'react';
 
 
-const mothersDay: React.FC = ()=>{
+const MothersDay: React.FC = ()=>{
 	return(<div>mothersDay</div>)
 }
 
-export default mothersDay;
+export default MothersDay;

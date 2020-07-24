@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import http from '../http-common';
 import { Card, CardHeader, CardActions, Button, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import getAllCollections  from './CollectionsServiceWorkers';
 
 
 interface ICover {
@@ -33,6 +33,13 @@ interface ICollections {
 }
 
 const useStyles = makeStyles({
+	collectionsArea: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		flexWrap: 'wrap',
+		width: '100vw',
+	},
 	collectionCard: {
 		margin: '2rem',
 		width: '300px',
@@ -64,26 +71,22 @@ const Collections: React.FC<{}> = () => {
 	const classes = useStyles();
 	const [collections, setCollections] = useState<ICollections[]>([]);
 	useEffect(() => {
-		fetch('https://bb-api.mithyalabs.com/api/categories').then(res => res.json()).then((res) => { console.log(res); setCollections([...res]); }).catch(console.log);
+		getAllCollections().then(res => setCollections(res.data)).catch(err => console.log(err));
 	}, []);
 	return (
-		<React.Fragment>
+		<div className={classes.collectionsArea}>
 			{
 				collections.map(collection => (
 					<Card key={collection.name} className={classes.collectionCard}>
-						{/* <CardMedia image={collection._cover.url} src={collection._cover.url} title={collection.name} /> */}
 						<div className={classes.collectionCardImgWrapper}>
 							<img className={classes.collectionCardImg} src={collection._cover.url} alt={collection.name} />
 						</div>
 						<CardHeader className={classes.collectionName} title={collection.name} />
-						{/* <CardContent>
-							<Typography className={classes.collectionCardContent} variant="body2">{collection.description}</Typography>
-						</CardContent> */}
 						<CardActions className={classes.collectionCardActions}><Link><Button variant="outlined" color="secondary"> Starting at ${collection.startingPrice}</Button></Link></CardActions>
 					</Card>
 				))
 			}
-		</React.Fragment>
+		</div>
 
 
 	);

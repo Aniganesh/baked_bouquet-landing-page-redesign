@@ -8,7 +8,7 @@ interface IHeaderProps {
 }
 
 
-const header: React.FC<IHeaderProps | null> = (props: IHeaderProps) => {
+const Header: React.FC<IHeaderProps | null> = (props: IHeaderProps) => {
 	if (props.isOpen) {
 		return (
 			<ul className="header-list">
@@ -24,4 +24,4 @@ const header: React.FC<IHeaderProps | null> = (props: IHeaderProps) => {
 	}
 }
 
-export default header;
+export default Header;

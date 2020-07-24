@@ -1,7 +1,8 @@
-import http from '../http-common';
+import http from './http-common';
 
 const getAllCollections = () => {
-	return http.get('/collections');
+	return http.get('categories');
 }
+
 
 export default getAllCollections;

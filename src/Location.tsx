@@ -1,6 +1,6 @@
 import React from 'react';
 import http from './http-common';
-import { Card, CardHeader, CardActions, Button, Modal, Typography, CardContent } from '@material-ui/core';
+import { Card, CardHeader, Modal, Typography, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 interface IStores {
@@ -107,8 +107,6 @@ const Stores: React.FC = () => {
 	return (
 		<div className={classes.locations}>
 			{
-
-
 				[...stores].map((store, index) => {
 					const modalRef = React.createRef<typeof Modal>();
 					return (
@@ -116,7 +114,7 @@ const Stores: React.FC = () => {
 							<Modal aria-labelledby={store.id} className={classes.modal} open={store.cardOpen} ref={modalRef} onKeyDown={(event) => handleCardKeyPress(event)}>
 								<Card className={classes.modalCard}>
 									<div>
-										<img src={store._cover.url} style={{ maxWidth: '40vw', border: '1px solid black'}} alt={store.name} />
+										<img src={store._cover.url} style={{ maxWidth: '40vw', border: '1px solid black' }} alt={store.name} />
 									</div>
 									<CardContent className={classes.cardContent}>
 										<CardHeader className={classes.storeDetails} id={store.id} title={store.name} />
@@ -148,7 +146,6 @@ const Stores: React.FC = () => {
 						</div>
 					)
 				})
-
 			}
 		</div>
 	)

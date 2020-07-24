@@ -10,6 +10,7 @@ import About from './About';
 import Blog from './Blog';
 import Franchise from './Franchise';
 import HomePage from './HomePage';
+import Products from './Products';
 import './App.css';
 
 
@@ -52,12 +53,13 @@ function App() {
         <Switch>
           <Route path="/shop_collection" component={Collections}></Route>
           <Route path="/mother's_day" component={MothersDay}></Route>
-          {/* <Route path="/shop_occasion" component={ShopOccasion}></Route> */}
+          {/* <Route path="/products" component={Products}></Route> */}
+          <Route path="/products/:filtertype/:slug" component={Products}></Route>
           <Route path="/events" component={Events}></Route>
           <Route path="/about" component={About}></Route>
           <Route path="/blog" component={Blog}></Route>
           <Route path="/franchise" component={Franchise}></Route>
-          <Route path="/" component={HomePage}></Route>
+          <Route path="/" exact component={HomePage}></Route>
         </Switch>
       </Router>
     </div>

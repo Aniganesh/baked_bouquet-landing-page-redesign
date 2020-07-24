@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import getAllOccasions from './OccasionServiceWorker';
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink/*  Switch, Route */ } from 'react-router-dom';
 import { MenuList, MenuItem, Button, ClickAwayListener, Typography, Popper, Grow, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+// import Products from './Products';
 
 interface IOccasion {
 	name: string,
@@ -38,13 +39,16 @@ const ShopOccasion: React.FC<{}> = () => {
 		setMenuIsOpen(!menuIsOpen);
 	}
 
+
 	useEffect(() => {
 		getAllOccasions().then((res) => setOccasions(res.data)).catch((err) => console.log(err));
 	}, []);
 
-	function closeMenu(event: React.MouseEvent<EventTarget>) {
-		if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
-			return;
+	function closeMenu(event: React.MouseEvent<EventTarget> | null) {
+		if (event !== null) {
+			if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+				return;
+			}
 		}
 
 
@@ -54,8 +58,8 @@ const ShopOccasion: React.FC<{}> = () => {
 	return (
 		<React.Fragment>
 			<Typography variant="h6"><Button onClick={() => toggleMenu()} ref={anchorRef} className={classes.navoption}>Shop Occasion</Button></Typography>
-			<Popper open={menuIsOpen} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-				{({ TransitionProps, placement }) => (
+			<Popper open={menuIsOpen} anchorEl={anchorRef.current} role='menu' transition disablePortal>
+				{({ TransitionProps }) => (
 					<Grow {...TransitionProps} style={{ transformOrigin: 'center top' }}>
 						<Paper>
 							<ClickAwayListener onClickAway={closeMenu}>
@@ -63,7 +67,7 @@ const ShopOccasion: React.FC<{}> = () => {
 									<Router>
 										{
 											[...occasions].map(occasion => (
-												<NavLink to={"/products/" + occasion.slug}>	<MenuItem key={occasion.id}>{occasion.name}</MenuItem> </NavLink>
+												<NavLink onClick={() => closeMenu(null)} key={occasion.id} to={"products/occasions/" + occasion.slug} style={{ textDecoration: 'none', color: 'white' }}>	<MenuItem key={occasion.id}>{occasion.name}</MenuItem> </NavLink>
 											))
 										}
 									</Router>

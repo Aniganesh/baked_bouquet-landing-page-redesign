@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
-import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom';
+import { /* BrowserRouter as Router, */ NavLink, Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles'
 import Collections from './Collections';
 import MothersDay from './MothersDay';
@@ -36,7 +36,6 @@ function App() {
   const classes = useStyles();
   return (
     <div className="App">
-      <Router>
         <AppBar className={classes.header}>
           <Toolbar>
             <Typography variant="h3" className={classes.logo} component="h1"><NavLink className={classes.navoption} to="/"> Baked bouquet</NavLink></Typography>
@@ -51,17 +50,16 @@ function App() {
           </Toolbar>
         </AppBar>
         <Switch>
+          <Route path="/products/:filtertype/:slug" component={Products}></Route>
           <Route path="/shop_collection" component={Collections}></Route>
           <Route path="/mother's_day" component={MothersDay}></Route>
           {/* <Route path="/products" component={Products}></Route> */}
-          <Route path="/products/:filtertype/:slug" component={Products}></Route>
           <Route path="/events" component={Events}></Route>
           <Route path="/about" component={About}></Route>
           <Route path="/blog" component={Blog}></Route>
           <Route path="/franchise" component={Franchise}></Route>
           <Route path="/" exact component={HomePage}></Route>
         </Switch>
-      </Router>
     </div>
   );
 }

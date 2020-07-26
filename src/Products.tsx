@@ -120,7 +120,7 @@ const Products: React.FC<RouteComponentProps> = (props: RouteComponentProps) => 
 						</div>
 						<CardHeader title={product.name} />
 						<CardContent>
-							{product.description}
+							<div dangerouslySetInnerHTML={{ __html: product.description }}></div>
 						</CardContent>
 					</Card>
 				))

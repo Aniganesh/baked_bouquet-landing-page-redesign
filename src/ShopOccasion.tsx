@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import getAllOccasions from './OccasionServiceWorker';
-import { BrowserRouter as Router, NavLink/*  Switch, Route */ } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MenuList, MenuItem, Button, ClickAwayListener, Typography, Popper, Grow, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-// import Products from './Products';
+
 
 interface IOccasion {
 	name: string,
@@ -64,13 +64,11 @@ const ShopOccasion: React.FC<{}> = () => {
 						<Paper>
 							<ClickAwayListener onClickAway={closeMenu}>
 								<MenuList autoFocusItem={menuIsOpen} className={classes.menu}>
-									<Router>
-										{
-											[...occasions].map(occasion => (
-												<NavLink onClick={() => closeMenu(null)} key={occasion.id} to={"products/occasions/" + occasion.slug} style={{ textDecoration: 'none', color: 'white' }}>	<MenuItem key={occasion.id}>{occasion.name}</MenuItem> </NavLink>
-											))
-										}
-									</Router>
+									{
+										[...occasions].map(occasion => (
+											<NavLink onClick={() => closeMenu(null)} key={occasion.id} to={"/products/occasions/" + occasion.slug} style={{ textDecoration: 'none', color: 'white' }}>	<MenuItem key={occasion.id}>{occasion.name}</MenuItem> </NavLink>
+										))
+									}
 								</MenuList>
 							</ClickAwayListener>
 						</Paper>
